@@ -1,4 +1,5 @@
-﻿namespace Polly.Caching;
+﻿#nullable enable
+namespace Polly.Caching;
 
 internal static class AsyncCacheEngine
 {
@@ -13,8 +14,8 @@ internal static class AsyncCacheEngine
         Action<Context, string> onCacheGet,
         Action<Context, string> onCacheMiss,
         Action<Context, string> onCachePut,
-        Action<Context, string, Exception> onCacheGetError,
-        Action<Context, string, Exception> onCachePutError)
+        Action<Context, string, Exception>? onCacheGetError,
+        Action<Context, string, Exception>? onCachePutError)
     {
         cancellationToken.ThrowIfCancellationRequested();
 
@@ -58,7 +59,7 @@ internal static class AsyncCacheEngine
             }
             catch (Exception ex)
             {
-                onCachePutError(context, cacheKey, ex);
+                onCachePutError?.Invoke(context, cacheKey, ex);
             }
         }
 
