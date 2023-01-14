@@ -25,7 +25,7 @@ internal static class CacheEngine
         }
 
         bool cacheHit;
-        TResult valueFromCache;
+        TResult? valueFromCache;
         try
         {
             (cacheHit, valueFromCache) = cacheProvider.TryGet(cacheKey);
@@ -39,7 +39,7 @@ internal static class CacheEngine
         if (cacheHit)
         {
             onCacheGet(context, cacheKey);
-            return valueFromCache;
+            return valueFromCache!;
         }
         else
         {
