@@ -34,7 +34,7 @@ internal static class CacheEngine
         {
             cacheHit = false;
             valueFromCache = default;
-            onCacheGetError(context, cacheKey, ex);
+            onCacheGetError?.Invoke(context, cacheKey, ex);
         }
         if (cacheHit)
         {
@@ -58,7 +58,7 @@ internal static class CacheEngine
             }
             catch (Exception ex)
             {
-                onCachePutError(context, cacheKey, ex);
+                onCachePutError?.Invoke(context, cacheKey, ex);
             }
         }
 

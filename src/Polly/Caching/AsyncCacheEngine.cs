@@ -35,7 +35,7 @@ internal static class AsyncCacheEngine
         {
             cacheHit = false;
             valueFromCache = default;
-            onCacheGetError(context, cacheKey, ex);
+            onCacheGetError?.Invoke(context, cacheKey, ex);
         }
         if (cacheHit)
         {
