@@ -39,8 +39,7 @@ public class CachePolicy : Policy, ICachePolicy
 
     /// <inheritdoc/>
     protected override void Implementation(Action<Context, CancellationToken> action, Context context, CancellationToken cancellationToken) // Pass-through/NOOP policy action, for void-returning calls through a cache policy.
-        =>
-            action(context, cancellationToken);
+        => action(context, cancellationToken);
 
     /// <inheritdoc/>
     [DebuggerStepThrough]
